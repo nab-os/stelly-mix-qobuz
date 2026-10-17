@@ -5,8 +5,8 @@ Private, and separate, so that stelly-mix carries nothing of Qobuz's: this
 crate registers a `Source` and builds its own binary, which is stelly-mix
 with `qobuz:` references wherever it takes a track.
 
-Qobuz itself is [stelly-qobuz](https://github.com/nab-os/stelly-qobuz)'s, the
-gateway Stelly uses too: it holds the account's credentials and its one
+Qobuz itself is stelly-qobuz's, the gateway Stelly uses too
+([image](https://hub.docker.com/r/stellymusic/stelly-qobuz)): it holds the account's credentials and its one
 request queue, so this and Stelly spend one 2/s budget between them, an
 index queued behind Stelly's browsing.
 

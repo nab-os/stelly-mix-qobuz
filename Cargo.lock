@@ -4769,7 +4769,7 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 [[package]]
 name = "stelly-audio"
 version = "0.1.0"
-source = "git+https://github.com/nab-os/stelly-audio#308a5f402d8e647a1ad9fab4af52c723601c7729"
+source = "git+https://github.com/nab-os/stelly-audio?tag=v0.1.0#c3c53109f6fa117940a77e20ed56eff14b8e5566"
 dependencies = [
  "anyhow",
  "ebur128",
@@ -4786,7 +4786,7 @@ dependencies = [
 [[package]]
 name = "stelly-mix"
 version = "0.1.0"
-source = "git+https://github.com/nab-os/stelly-mix#b93d468e548f84da7c66de5010a6c6533abc773b"
+source = "git+https://github.com/nab-os/stelly-mix?tag=v0.1.0#ecd221a6d50ee8d3e62ee210e4c2cea2ebd3519e"
 dependencies = [
  "anyhow",
  "argh",
@@ -4805,7 +4805,7 @@ dependencies = [
 [[package]]
 name = "stelly-mix-app"
 version = "0.1.0"
-source = "git+https://github.com/nab-os/stelly-mix#b93d468e548f84da7c66de5010a6c6533abc773b"
+source = "git+https://github.com/nab-os/stelly-mix?tag=v0.1.0#ecd221a6d50ee8d3e62ee210e4c2cea2ebd3519e"
 dependencies = [
  "anyhow",
  "dioxus",
@@ -4830,7 +4830,7 @@ dependencies = [
 [[package]]
 name = "stelly-qobuz-client"
 version = "0.1.0"
-source = "git+https://github.com/nab-os/stelly-qobuz#fdea0247a8d2213a08f2970979d9a0c6c457958c"
+source = "git+https://github.com/nab-os/stelly-qobuz-client?tag=v0.1.0#fc732b93f93d42b9e92d8bb78df7e90cafa8d61e"
 dependencies = [
  "anyhow",
  "serde",

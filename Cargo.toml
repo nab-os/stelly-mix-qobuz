@@ -20,11 +20,11 @@ required-features = ["app"]
 app = ["dep:stelly-mix-app"]
 
 [dependencies]
-stelly-mix = { git = "https://github.com/nab-os/stelly-mix" }
-stelly-mix-app = { git = "https://github.com/nab-os/stelly-mix", optional = true }
+stelly-mix = { git = "https://github.com/nab-os/stelly-mix", tag = "v0.1.0" }
+stelly-mix-app = { git = "https://github.com/nab-os/stelly-mix", tag = "v0.1.0", optional = true }
 # Qobuz, through the gateway that holds the account and its request queue,
 # shared with Stelly.
-stelly-qobuz-client = { git = "https://github.com/nab-os/stelly-qobuz", features = ["blocking"] }
+stelly-qobuz-client = { git = "https://github.com/nab-os/stelly-qobuz-client", tag = "v0.1.0", features = ["blocking"] }
 
 anyhow = "1"
 serde_json = "1"
