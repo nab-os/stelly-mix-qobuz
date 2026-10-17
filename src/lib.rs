@@ -11,6 +11,8 @@
 //! for the source, and analysed and mixed from there like any file. A
 //! collection brings in up to 2000 tracks, or `QOBUZ_LIMIT`.
 
+pub mod stelly;
+
 use anyhow::{bail, Context, Result};
 use serde_json::Value;
 use std::io::Write;
@@ -27,6 +29,15 @@ const MP3_320: u32 = 5;
 const COLLECTION_CAP: usize = 2000;
 /// What a fetched file can be, the format asked for first.
 const EXTENSIONS: [&str; 2] = ["flac", "mp3"];
+
+/// Every source this build adds to stelly-mix: Qobuz, and Stelly's space,
+/// whose tracks are Qobuz's.
+pub fn sources() -> Result<Vec<Box<dyn Source>>> {
+    Ok(vec![
+        Box::new(Qobuz::from_env()?),
+        Box::new(stelly::StellySpace::from_env(Qobuz::from_env()?)),
+    ])
+}
 
 pub struct Qobuz {
     gateway: Client,
@@ -120,11 +131,24 @@ impl Source for Qobuz {
     }
 
     fn fetch(&self, item: &Item, cache: &Path) -> Result<PathBuf> {
+        self.download(item, cache, self.format_id)
+    }
+
+    /// MP3 320: the analysis reads 48kHz mono, and loses nothing to it at a
+    /// third of FLAC's size.
+    fn fetch_for_analysis(&self, item: &Item, cache: &Path) -> Result<PathBuf> {
+        self.download(item, cache, MP3_320)
+    }
+}
+
+impl Qobuz {
+    /// The item's audio in `format_id`, unless some is in `cache` already.
+    fn download(&self, item: &Item, cache: &Path, format_id: u32) -> Result<PathBuf> {
         if let Some(target) = self.cached(item, cache) {
             return Ok(target);
         }
         std::fs::create_dir_all(cache).with_context(|| format!("creating {}", cache.display()))?;
-        let file_url = self.bulk().send(api::file_url(&item.id, self.format_id))?;
+        let file_url = self.bulk().send(api::file_url(&item.id, format_id))?;
         if file_url.sample {
             bail!("track {}: Qobuz offers only a preview of it to this account", item.id);
         }

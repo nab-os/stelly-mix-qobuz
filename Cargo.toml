@@ -9,8 +9,19 @@ publish = false
 name = "stelly-mix-qobuz"
 path = "src/main.rs"
 
+# The window, with these sources; it wants GTK and WebKitGTK headers to
+# build, see stelly-mix's README.
+[[bin]]
+name = "stelly-mix-qobuz-app"
+path = "src/bin/app.rs"
+required-features = ["app"]
+
+[features]
+app = ["dep:stelly-mix-app"]
+
 [dependencies]
 stelly-mix = { git = "https://github.com/nab-os/stelly-mix" }
+stelly-mix-app = { git = "https://github.com/nab-os/stelly-mix", optional = true }
 # Qobuz, through the gateway that holds the account and its request queue,
 # shared with Stelly.
 stelly-qobuz-client = { git = "https://github.com/nab-os/stelly-qobuz", features = ["blocking"] }
