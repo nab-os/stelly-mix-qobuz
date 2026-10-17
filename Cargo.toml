@@ -1,0 +1,25 @@
+[package]
+name = "stelly-mix-qobuz"
+version = "0.1.0"
+edition = "2021"
+description = "stelly-mix with Qobuz as a source. Private: Qobuz's client, credentials and terms stay out of stelly-mix."
+publish = false
+
+[[bin]]
+name = "stelly-mix-qobuz"
+path = "src/main.rs"
+
+[dependencies]
+stelly-mix = { git = "ssh://git@github.com/nab-os/stelly-mix.git" }
+
+anyhow = "1"
+md-5 = "0.11"
+serde_json = "1"
+ureq = { version = "3", features = ["json"] }
+
+[profile.release]
+lto = true
+
+# stelly-mix's analysis is tight loops over minutes of audio.
+[profile.dev.package."*"]
+opt-level = 3
