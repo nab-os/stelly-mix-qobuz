@@ -1,5 +1,12 @@
 # stelly-mix-qobuz
 
+> **Archived.** Stelly's server now holds the mix analysis
+> (`stelly-server mix-analyse`, from an album, an artist, a playlist, the
+> family's likes, a mood, or a track's or an artist's nearest), and
+> stelly-mix is its client: `stelly-mix server-analyse <selection>`, `sync`,
+> and Stelly as its `qobuz` source for the audio. See
+> [stelly-mix](https://github.com/nab-os/stelly-mix#stellys-server).
+
 [stelly-mix](https://github.com/nab-os/stelly-mix) with Qobuz as a source.
 Private, and separate, so that stelly-mix carries nothing of Qobuz's: this
 crate registers a `Source` and builds its own binary, which is stelly-mix
