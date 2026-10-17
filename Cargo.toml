@@ -2,7 +2,7 @@
 name = "stelly-mix-qobuz"
 version = "0.1.0"
 edition = "2021"
-description = "stelly-mix with Qobuz as a source. Private: Qobuz's client, credentials and terms stay out of stelly-mix."
+description = "stelly-mix with Qobuz as a source, through stelly-qobuz's gateway. Private: Qobuz's terms stay out of stelly-mix."
 publish = false
 
 [[bin]]
@@ -11,11 +11,14 @@ path = "src/main.rs"
 
 [dependencies]
 stelly-mix = { git = "ssh://git@github.com/nab-os/stelly-mix.git" }
+# Qobuz, through the gateway that holds the account and its request queue,
+# shared with Stelly.
+stelly-qobuz-client = { git = "ssh://git@github.com/nab-os/stelly-qobuz.git", features = ["blocking"] }
 
 anyhow = "1"
-md-5 = "0.11"
 serde_json = "1"
-ureq = { version = "3", features = ["json"] }
+# Downloads, from Qobuz's CDN.
+ureq = "3"
 
 [profile.release]
 lto = true
