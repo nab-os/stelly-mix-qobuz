@@ -10,10 +10,10 @@ name = "stelly-mix-qobuz"
 path = "src/main.rs"
 
 [dependencies]
-stelly-mix = { git = "ssh://git@github.com/nab-os/stelly-mix.git" }
+stelly-mix = { git = "https://github.com/nab-os/stelly-mix" }
 # Qobuz, through the gateway that holds the account and its request queue,
 # shared with Stelly.
-stelly-qobuz-client = { git = "ssh://git@github.com/nab-os/stelly-qobuz.git", features = ["blocking"] }
+stelly-qobuz-client = { git = "https://github.com/nab-os/stelly-qobuz", features = ["blocking"] }
 
 anyhow = "1"
 serde_json = "1"
